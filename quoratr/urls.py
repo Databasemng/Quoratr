@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from quoratr.views import (LandingView, LogoutView,
+    RegisterView, IndexView, RegistrationRequestView
+)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', LandingView.as_view(), name='landing'),
+    url(r'^logout/$', LogoutView.as_view(), name='logout'),
+    url(r'^register/$', RegisterView.as_view(), name='register'),
+    url(r'^index/$', IndexView.as_view(), name='index'),
+    url(
+        r'^registration/requests/$',
+        RegistrationRequestView.as_view(), name='registration-request'
+    )
 ]
